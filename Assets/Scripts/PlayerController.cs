@@ -150,6 +150,7 @@ public class PlayerController : MonoBehaviour
     }
     private void WeaponSwitching()
     {
+        int weaponNum = 0;
         int currentNum = currentWeaponIndex + 1;
 
         if (currentNum > pickedWeapons.Count)
@@ -231,13 +232,14 @@ public class PlayerController : MonoBehaviour
                     pickedWeapons[i].gameObject.GetComponent<WeaponController>().PlayAudioOnce(pickedWeapons[i].gameObject.GetComponent<WeaponController>().SwappingAudio);
                     pickedWeapons[i].gameObject.GetComponent<WeaponController>().HandleAmmoUI();
 
-                    WeaponNameUI[i].text = (i + 1) + "     " + pickedWeaponsNames[i];
+                    WeaponNameUI[0].text = 1 + "     " + pickedWeaponsNames[i];
                 }
                 else
                 {
+                    weaponNum++;
                     pickedWeapons[i].gameObject.SetActive(false);
                     pickedWeapons[i].gameObject.GetComponent<WeaponController>().CanShoot = false;
-                    WeaponNameUI[i].text = (i + 1) + "     " + pickedWeaponsNames[i];
+                    WeaponNameUI[weaponNum].text = (weaponNum + 1) + "     " + pickedWeaponsNames[i];
                 }
 
             }
